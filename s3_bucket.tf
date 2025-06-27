@@ -1,7 +1,14 @@
-resource "aws_s3_bucket" "s3_bucket" {
-  bucket = "dev-project-bucket-19062025"
+# S3 bucket for storing Terraform state
+resource "aws_s3_bucket" "tf_state" {
+  bucket = "terraform-statefile-bucket-123456" 
+
+  lifecycle {
+    prevent_destroy = true
+  }
+
   tags = {
-    Name        = "dev-project-bucket-19062025"
-    environment = "Dev"
+    Name        = "Terraform Statefile Bucket"
+    Environment = "Dev"
   }
 }
+

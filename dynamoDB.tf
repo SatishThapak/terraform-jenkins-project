@@ -1,4 +1,5 @@
-resource "aws_dynamodb_table" "terraform_locks" {
+# DynamoDB table for state locking
+resource "aws_dynamodb_table" "tf_lock" {
   name         = "terraform-locks"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
@@ -6,5 +7,14 @@ resource "aws_dynamodb_table" "terraform_locks" {
   attribute {
     name = "LockID"
     type = "S"
+  }
+
+  lifecycle {
+    prevent_destroy = true
+  }
+
+  tags = {
+    Name        = "Terraform Lock Table"
+    Environment = "Terraform"
   }
 }
