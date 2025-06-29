@@ -7,14 +7,14 @@ module "networking" {
   availability_zone    = var.availability_zone
 }
 
-/*
-module "security_group" {
+module "security_groups" {
   source              = "./security-groups"
-  ec2_sg_name         = "SG for EC2 to enable SSH(22), HTTPS(443) and HTTP(80)"
-  vpc_id              = module.networking.dev_proj_1_vpc_id
-  ec2_jenkins_sg_name = "Allow port 8080 for jenkins"
+  vpc_id              = module.networking.vpc_id
+  jenkins_http_sg     = "terra_sg_ssh_http"
+  jenkins_sg_portopen = "terra_sg_jenkins_8080"
 }
 
+/*
 module "jenkins" {
   source                    = "./jenkins"
   ami_id                    = var.ami_id
