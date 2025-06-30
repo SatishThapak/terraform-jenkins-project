@@ -31,3 +31,24 @@ variable "jenkins_sg_portopen" {
   type        = string
 }
 
+variable "ami_id" {
+  type = string
+}
+variable "instance_type" {
+  type = string
+}
+variable "tag_name" {
+  type = string
+}
+variable "public_key" {
+  type = string
+}
+variable "subnet_id" {
+  type = string
+}
+variable "enable_public_ip_address" {
+  type = string
+}
+variable "user_data_install_jenkins" {
+  type = string
+}
