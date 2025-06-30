@@ -56,6 +56,7 @@ resource "aws_route_table" "public" {
     Name = "terra_jenkins_project-public-rt"
   }
 }
+
 # Public Route Table and public Subnet Association
 resource "aws_route_table_association" "public_assoc" {
   for_each = aws_subnet.public
@@ -63,7 +64,6 @@ resource "aws_route_table_association" "public_assoc" {
   subnet_id      = each.value.id
   route_table_id = aws_route_table.public.id
 }
-
 
 # Private Route Table
 resource "aws_route_table" "private" {
