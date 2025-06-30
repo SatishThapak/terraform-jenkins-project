@@ -46,9 +46,12 @@ variable "public_key" {
 variable "subnet_id" {
   type = string
 }
+
 variable "enable_public_ip_address" {
-  type = string
+  type    = bool
+  default = true
 }
+
 variable "user_data_install_jenkins" {
   type = string
 }

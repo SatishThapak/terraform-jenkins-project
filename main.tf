@@ -14,19 +14,23 @@ module "security_groups" {
   jenkins_sg_portopen = "terra_sg_jenkins_8080"
 }
 
-/*
-module "jenkins" {
-  source                    = "./jenkins"
+
+module "jenkins_instance" {
+  source                    = "./jenkins_instance"
   ami_id                    = var.ami_id
-  instance_type             = "t2.medium"
+  instance_type             = var.instance_type
   tag_name                  = "Jenkins:Ubuntu Linux EC2"
   public_key                = var.public_key
-  subnet_id                 = tolist(module.networking.dev_proj_1_public_subnets)[0]
-  sg_for_jenkins            = [module.security_group.sg_ec2_sg_ssh_http_id, module.security_group.sg_ec2_jenkins_port_8080]
+  subnet_id                 = module.networking.public_subnet_ids[0] 
+  sg_for_jenkins            = [
+    module.security_group.jenkins_http_sg,
+    module.security_group.jenkins_sg_portopen
+  ]
   enable_public_ip_address  = true
-  user_data_install_jenkins = templatefile("./jenkins-runner-script/jenkins-installer.sh", {})
+  user_data_install_jenkins = templatefile("./jenkins_script/jenkins.sh", {})
 }
 
+/*
 module "lb_target_group" {
   source                   = "./load-balancer-target-group"
   lb_target_group_name     = "jenkins-lb-target-group"
