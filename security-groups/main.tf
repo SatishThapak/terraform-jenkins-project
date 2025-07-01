@@ -1,10 +1,9 @@
-variable "jenkins_http_sg" {}
+variable "jenkins_openport_22" {}
+variable "jenkins_8080" {}
 variable "vpc_id" {}
-variable "jenkins_sg_portopen" {}
 
-# SG for SSH, HTTP, and HTTPS
-resource "aws_security_group" "sg_for_jenkins" {
-  name        = var.jenkins_http_sg
+resource "aws_security_group" "jenkins_intance" {
+  name        = var.jenkins_openport_22
   description = "Allow SSH (22), HTTP (80), and HTTPS (443)"
   vpc_id      = var.vpc_id
 
@@ -41,6 +40,6 @@ resource "aws_security_group" "sg_for_jenkins" {
   }
 
   tags = {
-    Name = var.jenkins_http_sg
+    Name = var.jenkins_openport_22
   }
 }
