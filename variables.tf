@@ -1,22 +1,10 @@
 variable "vpc_cidr" {}
 variable "vpc_name" {}
+variable "public_subnet_config" {}
+variable "private_subnet_config" {}
 variable "availability_zone" {}
 
-variable "vpc_id" {
-  type    = string
-  default = null
-}
-
-variable "public_subnet_config" {
-  type = map(object({
-    cidr = string
-    az   = string
-  }))
-}
-
-variable "private_subnet_config" {
-  type = map(object({
-    cidr = string
-    az   = string
-  }))
-}
+variable "ami" {}
+variable "instance_type" {}
+variable "public_key" {}
+variable "instance_name" {}
