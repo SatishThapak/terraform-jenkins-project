@@ -25,6 +25,7 @@ module "jenkins_instance" {
   instance_name         = var.instance_name
   subnet_id             = module.networking.public_subnet_ids[0]
   vpc_security_group_ids = [module.security_groups.jenkins_sg_id]
+  enable_public_ip_address = true
 }
 
 

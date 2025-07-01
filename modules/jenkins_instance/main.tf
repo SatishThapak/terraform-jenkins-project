@@ -3,7 +3,7 @@ resource "aws_instance" "jenkins_instance" {
   instance_type = var.instance_type
   key_name = aws_key_pair.jenkins_key.key_name
   subnet_id = var.subnet_id
-
+  associate_public_ip_address = var.enable_public_ip_address
     tags = {
     Name = var.instance_name
   }
