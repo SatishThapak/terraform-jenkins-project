@@ -15,10 +15,10 @@ resource "aws_security_group" "jenkins_instance" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  ingress {
+ ingress {
     description = "Allow HTTP from anywhere"
-    from_port   = 80
-    to_port     = 80
+    from_port   = 8080
+    to_port     = 8080
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
