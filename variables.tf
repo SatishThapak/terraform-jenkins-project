@@ -20,24 +20,3 @@ variable "private_subnet_config" {
     az   = string
   }))
 }
-
-variable "jenkins_http_sg" {
-  description = "Name for the security group allowing SSH, HTTP, and HTTPS"
-  type        = string
-}
-
-variable "jenkins_sg_portopen" {
-  description = "Name for the security group allowing port 8080 for Jenkins"
-  type        = string
-}
-
-variable "ami_id" {
-  type = string
-}
-variable "instance_type" {
-  type = string
-}
-
-variable "public_key" {
-  type = string
-}
