@@ -6,7 +6,7 @@ module "networking" {
   private_subnet_config = var.private_subnet_config
   availability_zone    = var.availability_zone
 }
-
+/*
 module "security_groups" {
   source              = "./security-groups"
   vpc_id              = module.networking.vpc_id

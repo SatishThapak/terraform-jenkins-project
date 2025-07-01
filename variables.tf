@@ -3,8 +3,8 @@ variable "vpc_name" {}
 variable "availability_zone" {}
 
 variable "vpc_id" {
-  description = "ID of the VPC to associate the security groups with"
-  type        = string
+  type    = string
+  default = null
 }
 
 variable "public_subnet_config" {
@@ -37,21 +37,7 @@ variable "ami_id" {
 variable "instance_type" {
   type = string
 }
-variable "tag_name" {
-  type = string
-}
+
 variable "public_key" {
-  type = string
-}
-variable "subnet_id" {
-  type = string
-}
-
-variable "enable_public_ip_address" {
-  type    = bool
-  default = true
-}
-
-variable "user_data_install_jenkins" {
   type = string
 }
