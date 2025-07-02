@@ -15,7 +15,6 @@ module "security_groups" {
   jenkins_8080          = "jenkins-ui"
 }
 
-
 module "jenkins_instance" {
   source                = "./modules/jenkins_instance"
   ami                   = var.ami
@@ -28,19 +27,17 @@ module "jenkins_instance" {
   enable_public_ip_address = true
 }
 
-
-
-
-/*
-module "lb_target_group" {
-  source                   = "./load-balancer-target-group"
+module "load_balancer_target-group" {
+  source                   = "./modules/load_balancer_target-group"
   lb_target_group_name     = "jenkins-lb-target-group"
-  lb_target_group_port     = 8080
+  lb_target_group_port     = "8080"
   lb_target_group_protocol = "HTTP"
-  vpc_id                   = module.networking.dev_proj_1_vpc_id
-  ec2_instance_id          = module.jenkins.jenkins_ec2_instance_ip
+  vpc_id                   = module.networking.vpc_id
+  target_type              = "instance"
+  jenkins_instance_id      = module.jenkins_instance.jenkins_instance_id
 }
 
+/*
 module "alb" {
   source                    = "./load-balancer"
   lb_name                   = "dev-proj-1-alb"
