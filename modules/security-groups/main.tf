@@ -1,7 +1,3 @@
-variable "jenkins_openport_22" {}
-variable "jenkins_8080" {}
-variable "vpc_id" {}
-
 resource "aws_security_group" "jenkins_instance" {
   name        = var.jenkins_openport_22
   description = "Allow SSH (22), HTTP (80), and HTTPS (443)"
@@ -43,3 +39,4 @@ resource "aws_security_group" "jenkins_instance" {
     Name = var.jenkins_openport_22
   }
 }
+

@@ -9,3 +9,4 @@ variable "instance_type" {}
 variable "public_key" {}
 variable "instance_name" {}
 
+
